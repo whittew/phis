@@ -21,23 +21,23 @@ def task3(request):
 
 
 def task1_way(v, a):
-    v = int(v)/3.6
-    a = int(a)/10
+    v = v/3.6
+    a = a/10
     S = (v**2) / (2 * a)
     return S
 
 
 def task1_time(v, a):
-    v = int(v)/3.6
-    a = int(a)/10
+    v = v/3.6
+    a = a/10
     time = v/a
     return time
 
 
 def task1_output(request):
     if request.method == 'POST':
-        v = request.POST['v']
-        a = request.POST['a']
+        v = int(request.POST['v'])
+        a = (request.POST['a'])
         if 'div' in request.POST:
             way = task1_way(v, a)
             time = task1_time(v, a)
