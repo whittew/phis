@@ -1,11 +1,11 @@
 
 
 form{
-    padding: 32px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgb(0, 255, 170);    
     font-family: sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 5px;
 
 }
 
@@ -20,7 +20,7 @@ label {
 
 input[type=text], 
 input[type=number] {
-    padding:0 0 10px 0;
+    padding: 20px;;
     margin:7px 0;
     width: 90%;
     border: none;
@@ -69,6 +69,7 @@ body{
 .dropbtn {
     background-color: rgb(0, 192, 157);
     color: white;
+    
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -78,6 +79,7 @@ body{
 .dropdown {
     position: relative;
     display: inline-block;
+
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -106,3 +108,4 @@ body{
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: rgb(0, 152, 124);}
+

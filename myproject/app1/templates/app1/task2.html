@@ -1,8 +1,9 @@
 {% extends 'app1/base.html' %}
-
+{% load static %}
 
 {% block title %}
-Задача 2.23
+<title>Задача 2.23</title>
+
 {% endblock %}
 
 {% block content %}
@@ -11,26 +12,32 @@
         Котел с равномерно распределенным по длине весом Р и радиуса R лежит на выступах каменной
         кладки. Расстояние между стенками кладки L. Пренебрегая трением, наити давление котла на кладку в точках А и В.
     </h5>
+    <center>
+      <img src="{% static 'app1/img/2.23.png' %}" >  
+    </center>
+    
     <div class="row">
         <div class="col-12">
           <form method="POST">
             {% csrf_token %}
                 
             <label>Введите вес "P" в кН (максимальная точность 0.001):</label>
-            <input type="number" name="P" class="form-control" step="0.001"/>
+            <input type="number" name="P"  step="0.001"/>
                   
             <label>Введите Расстояние между стенками кладки "L" в метрах (максимальная точность 0.001):</label>
-            <input type="number" name="L" class="form-control" step="0.001"/>
+            <input type="number" name="L"  step="0.001"/>
 
             <label>Введите радиус "R" в метрах (максимальная точность 0.001):</label>
-            <input type="number" name="R" class="form-control" step="0.001"/>
+            <input type="number" name="R"  step="0.001"/>
 
             <br><br>      
             <button type="submit" name="out" class="btn-primary col-5">Узнать ответ</button>
              <br><br>      
-            <label>Давление котла на кладку в точках А и В равны друг другу и равны следующему значению в кН:</label>
-            <input type="text" value="{{N}}" class="form-control"/>
+            <label>Давление котла на кладку в точках А и В равны друг другу и равны следующему значению в кН: {{N}}</label>
+            
+            
           </form>
         </div>
       </div>
+      <br><br>
 {% endblock %}

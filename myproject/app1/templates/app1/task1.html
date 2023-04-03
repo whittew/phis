@@ -1,9 +1,10 @@
 {% extends 'app1/base.html' %}
-
+{% load static %}
 
 
 {% block title %}
-Задача 12.1
+<title>Задача 12.1</title>
+
 {% endblock %}
 
 {% block content %}
@@ -11,6 +12,10 @@
     <h5>Поезд движется со скоростью  V; при торможении он получает замедление, равное a. Найти, за какое
         время до прихода поезда на станцию и на каком от нее расстоянии
         должно быть начато торможение.</h5>
+    <center>
+      <img src="{% static 'app1/img/12_1.png' %}" >
+    </center>    
+             
   <p>
     <div class="row">
       <div class="col-12">
@@ -18,23 +23,21 @@
           {% csrf_token %}
            
           <label>Введите скорость "V" в км/ч (максимальная точность 0.001):</label>
-          <input type="number" name="v" class="form-control" step="0.001"/>
+          <input type="number" name="v"  step="0.001"/>
                 
           <label>Введите замедление "a" в м/c<sup>2</sup> (максимальная точность 0.001):</label>
-          <input type="number" name="a" class="form-control" step="0.001"/>
+          <input type="number" name="a"  step="0.001"/>
           <br><br>      
           <button type="submit" name="out" class="btn-primary col-5">Узнать ответ</button>
            <br><br>      
-          <label >Путь торможения в метрах:</label>
-          <input type="text" value="{{way}}" class="form-control"/>
-          <label>Время торможения в секундах:</label>
-          <input type="text" value="{{time}}" class="form-control"/>  
-            
-             
+          <label >Путь торможения в метрах: {{way}}</label>
+          <br><br>
+          <label>Время торможения в секундах: {{time}}</label>
+           
         </form>
       </div>
     </div>
   </p>
-        
+  <br><br>      
         
 {% endblock %}

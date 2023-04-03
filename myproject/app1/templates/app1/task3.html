@@ -1,43 +1,49 @@
 {% extends 'app1/base.html' %}
-
+{% load static %}
 {% block title %}
-Задача 2.55
+
+<title>Задача 2.55</title>
 {% endblock %}
 
 {% block content %}
     <h1 class="title"><span>Задача 2.55</span></h1>
     <h5>
         Водонапорная башня состоит из цилиндрического резервуара высоты h диаметра D, укрепленного на четырех симметрично расположенных столбах, наклонных к горизонту, дно резервуара находится на 
-        высоте H над уровнем опор, вес башни P, давление ветра рассчитывается на площадь проекции
+        высоте H над уровнем опор, вес башни G, давление ветра рассчитывается на площадь проекции
         поверхности резервуара на плоскость, перпендикулярную направлению ветра, причем удельное давление ветра принимается равным p.
         Определить необходимое расстояние АВ межу основаниями столбов.
     </h5>
+    <center>
+      <img src="{% static 'app1/img/2.55.png' %}" >
+    </center>
+    
     <div class="row">
         <div class="col-12">
           <form method="POST">
             {% csrf_token %}
                 
             <label>Введите высоту цилиндрического резервуара "h" в метрах (максимальная точность 0.001):</label>
-            <input type="number" name="h" class="form-control" step="0.001"/>
+            <input type="number" name="h"  step="0.001"/>
                   
             <label>Введите диаметр цилиндрического резервуара "D" в метрах (максимальная точность 0.001):</label>
-            <input type="number" name="D" class="form-control" step="0.001"/>
+            <input type="number" name="D"  step="0.001"/>
 
             <label>Введите высоту башни "H" в метрах (максимальная точность 0.001):</label>
-            <input type="number" name="high" class="form-control" step="0.001"/>
+            <input type="number" name="high"  step="0.001"/>
             
-            <label>Введите вес башни "P" в кН (максимальная точность 0.001):</label>
-            <input type="number" name="P" class="form-control" step="0.001"/>
+            <label>Введите вес башни "G" в кН (максимальная точность 0.001):</label>
+            <input type="number" name="P"  step="0.001"/>
 
-            <label>Введите удельное давление "P" в кПа (максимальная точность 0.001):</label>
-            <input type="number" name="p" class="form-control" step="0.001"/>
+            <label>Введите удельное давление "p" в кПа (максимальная точность 0.001):</label>
+            <input type="number" name="p"  step="0.001"/>
 
             <br><br>      
             <button type="submit" name="out" class="btn-primary col-5">Узнать ответ</button>
              <br><br>      
-            <label>Расстояние AB метрах:</label>
-            <input type="text" value="{{AB}}" class="form-control"/>
+            <label>Расстояние AB метрах:  {{AB}}</label>
+                      
           </form>
         </div>
       </div>
+      <br><br>
 {% endblock %}

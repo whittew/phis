@@ -9,8 +9,12 @@ def index(request):
 
 def task1(request):
     if request.method == 'POST':
-        v = float(request.POST['v'])
-        a = float(request.POST['a'])
+        v = str(request.POST['v'])
+        a = str(request.POST['a'])
+        if v == '' or a == '':
+            return render(request, 'app1/task1.html')
+        v = float(v)
+        a = float(a)
         if 'out' in request.POST:
             way = task1_way(v, a)
             time = task1_time(v, a)
@@ -24,9 +28,14 @@ def task1(request):
 
 def task2(request):
     if request.method == 'POST':
-        P = float(request.POST['P'])
-        L = float(request.POST['L'])
-        R = float(request.POST['R'])
+        P = str(request.POST['P'])
+        L = str(request.POST['L'])
+        R = str(request.POST['R'])
+        if P == '' or L == '' or R == '':
+            return render(request, 'app1/task2.html')
+        P = float(P)
+        L = float(L)
+        R = float(R)
         if 'out' in request.POST:
             N = task2_N(P, L, R)
             result = {
@@ -38,11 +47,18 @@ def task2(request):
 
 def task3(request):
     if request.method == 'POST':
-        P = float(request.POST['P'])
-        h = float(request.POST['h'])
-        D = float(request.POST['D'])
-        H = float(request.POST['high'])
-        p = float(request.POST['p'])
+        P = str(request.POST['P'])
+        h = str(request.POST['h'])
+        D = str(request.POST['D'])
+        H = str(request.POST['high'])
+        p = str(request.POST['p'])
+        if P == '' or h == '' or D == ' ' or H == '' or p == '':
+            return render(request, 'app1/task3.html')
+        P = float(P)
+        h = float(h)
+        D = float(D)
+        H = float(H)
+        p = float(p)
         if 'out' in request.POST:
             AB = task3_AB(h, D, H, P, p)
             result = {
@@ -56,18 +72,18 @@ def task3(request):
 
 def task1_way(v, a):
     v = v/3.6
-    return (v**2) / (2 * a)
+    return round((v**2) / (2 * a), 3)
 
 
 def task1_time(v, a):
     v = v/3.6
-    return v/a
+    return round(v/a, 3)
 
 
 # Реализация решения task2
 
 def task2_N(P, L, R):
-    return P/(2*m.sqrt(1-(L**2/(4*R**2))))
+    return round(P/(2*m.sqrt(1-(L**2/(4*R**2)))), 3)
 
 
 # Реализация решения task3
@@ -75,4 +91,4 @@ def task2_N(P, L, R):
 def task3_AB(h, R, H, P, p):
     b = h/2 + H
     S = R*h
-    return (2 * p * S * b)/P
+    return round((2 * p * S * b)/P, 3)
