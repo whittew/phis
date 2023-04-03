@@ -19,21 +19,23 @@
   <p>
     <div class="row">
       <div class="col-12">
+        
         <form method="POST">
           {% csrf_token %}
            
           <label>Введите скорость "V" в км/ч (максимальная точность 0.001):</label>
-          <input type="number" name="v"  step="0.001"/>
+          <input type="number" name="v"  step="0.001" required/>
                 
           <label>Введите замедление "a" в м/c<sup>2</sup> (максимальная точность 0.001):</label>
-          <input type="number" name="a"  step="0.001"/>
+          <input type="number" name="a"  step="0.001" required/>
           <br><br>      
           <button type="submit" name="out" class="btn-primary col-5">Узнать ответ</button>
-           <br><br>      
+          <h3 style="display: inline;">{{out_r}}</h3>
+          <br><br>      
           <label >Путь торможения в метрах: {{way}}</label>
           <br><br>
           <label>Время торможения в секундах: {{time}}</label>
-           
+          <br><br>
         </form>
       </div>
     </div>

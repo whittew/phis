@@ -22,19 +22,20 @@
             {% csrf_token %}
                 
             <label>Введите вес "P" в кН (максимальная точность 0.001):</label>
-            <input type="number" name="P"  step="0.001"/>
+            <input type="number" name="P"  step="0.001" required/>
                   
             <label>Введите Расстояние между стенками кладки "L" в метрах (максимальная точность 0.001):</label>
-            <input type="number" name="L"  step="0.001"/>
+            <input type="number" name="L"  step="0.001" required/>
 
             <label>Введите радиус "R" в метрах (максимальная точность 0.001):</label>
-            <input type="number" name="R"  step="0.001"/>
+            <input type="number" name="R"  step="0.001" required/>
 
             <br><br>      
             <button type="submit" name="out" class="btn-primary col-5">Узнать ответ</button>
+            <h3 style="display: inline;">{{out_r}}</h3>
              <br><br>      
             <label>Давление котла на кладку в точках А и В равны друг другу и равны следующему значению в кН: {{N}}</label>
-            
+            <br><br>
             
           </form>
         </div>

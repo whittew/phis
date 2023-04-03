@@ -9,12 +9,14 @@ def index(request):
 
 def task1(request):
     if request.method == 'POST':
-        v = str(request.POST['v'])
-        a = str(request.POST['a'])
-        if v == '' or a == '':
-            return render(request, 'app1/task1.html')
-        v = float(v)
-        a = float(a)
+        v = float(request.POST['v'])
+        a = float(request.POST['a'])
+        if a < 0 or v < 0:
+            out_r = 'Неверные данные'
+            result = {
+                'out_r': out_r
+            }
+            return render(request, 'app1/task1.html', result)
         if 'out' in request.POST:
             way = task1_way(v, a)
             time = task1_time(v, a)
@@ -28,14 +30,15 @@ def task1(request):
 
 def task2(request):
     if request.method == 'POST':
-        P = str(request.POST['P'])
-        L = str(request.POST['L'])
-        R = str(request.POST['R'])
-        if P == '' or L == '' or R == '':
-            return render(request, 'app1/task2.html')
-        P = float(P)
-        L = float(L)
-        R = float(R)
+        P = float(request.POST['P'])
+        L = float(request.POST['L'])
+        R = float(request.POST['R'])
+        if P < 0 or L < 0 or R < 0:
+            out_r = 'Неверные данные'
+            result = {
+                'out_r': out_r
+            }
+            return render(request, 'app1/task2.html', result)
         if 'out' in request.POST:
             N = task2_N(P, L, R)
             result = {
@@ -47,18 +50,17 @@ def task2(request):
 
 def task3(request):
     if request.method == 'POST':
-        P = str(request.POST['P'])
-        h = str(request.POST['h'])
-        D = str(request.POST['D'])
-        H = str(request.POST['high'])
-        p = str(request.POST['p'])
-        if P == '' or h == '' or D == ' ' or H == '' or p == '':
-            return render(request, 'app1/task3.html')
-        P = float(P)
-        h = float(h)
-        D = float(D)
-        H = float(H)
-        p = float(p)
+        P = float(request.POST['P'])
+        h = float(request.POST['h'])
+        D = float(request.POST['D'])
+        p = float(request.POST['p'])
+        H = float(request.POST['high'])
+        if P < 0 or h < 0 or D < 0 or p < 0 or H < 0:
+            out_r = 'Неверные данные'
+            result = {
+                'out_r': out_r
+            }
+            return render(request, 'app1/task3.html', result)
         if 'out' in request.POST:
             AB = task3_AB(h, D, H, P, p)
             result = {
